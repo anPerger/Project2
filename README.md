@@ -28,6 +28,10 @@ Graph comparison:
 Number of National Wildlife Refuge per state
 Number of endangered species per state
 
+mock up:
+
+https://files.slack.com/files-pri/T014PTM18MR-F01CWGTQFML/screen_shot_2020-10-21_at_10.03.07_pm.png
+
 inspirations:
 
 https://files.slack.com/files-pri/T014PTM18MR-F01D05FH7EH/endangeredspecies.png
