@@ -23,3 +23,8 @@ A map with multiple layers
 Graph comparison:
 Number of National Wildlife Refuge per state
 Number of endangered species per state
+
+inspirations:
+https://files.slack.com/files-pri/T014PTM18MR-F01D05FH7EH/endangeredspecies.png
+https://files.slack.com/files-pri/T014PTM18MR-F01CNFQ58FR/screen_shot_2020-10-21_at_9.38.22_pm.png
+
