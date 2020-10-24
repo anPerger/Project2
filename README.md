@@ -3,10 +3,15 @@ Threatened and Endangered Species on National Wildlife
 Objectives
 
 Scraping data from the dataset sources to answer the questions
+
 • Where are the largest population centers? 
+
 • What is the population density of the state?
+
 • Is there a correlation between state population and endangered species?
+
 • If there are more refuges are there less endangered species in that State?
+
 • 
 
 Dataset Sources 
@@ -23,10 +28,15 @@ Tools
 
 
 • Jupyter Notebook
+
 • MangoDB
+
 • Bootstrap
+
 • Javascript
+
 • Geomap
+
 
 Process 
 
