@@ -1,6 +1,6 @@
-Threatened and Endangered Species on National Wildlife
+# Threatened and Endangered Species on National Wildlife
 
-Objectives
+## Objectives
 
 Scraping data from the dataset sources to answer the questions
 
@@ -14,7 +14,7 @@ Scraping data from the dataset sources to answer the questions
 
 • 
 
-Dataset Sources 
+## Dataset Sources 
 
 
 • https://www.census.gov/data/tables/time-series/demo/popest/2010s-national-total.html
@@ -24,7 +24,7 @@ Dataset Sources
 • https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States_by_population_density
 
 
-Tools
+## Tools
 
 
 • Jupyter Notebook
@@ -38,11 +38,11 @@ Tools
 • Geomap
 
 
-Process 
+## Process 
 
 • Clean in Pandas, save to csv, and load in posgreSQL Sketch ideas A map with multiple layers Population centers/density (heat map) Location of endangered species Number of endangered animals Number of endangered plants Graph comparison: Number of National Wildlife Refuge per state Number of endangered species per state
 
-Roadblocks
+## Roadblocks
 
 • 
 
