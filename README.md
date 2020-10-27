@@ -1,6 +1,6 @@
 # Project2
 
-audrics test edit2
+audrics test edits
 
 
 Audric, Autumn, Hermela, Michelle
