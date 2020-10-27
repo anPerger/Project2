@@ -1,99 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bootstrap 4, from LayoutIt!</title>
+		<title>PIES Analysis</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
+		<meta name="description" content="Source code generated using layoutit.com">
+		<meta name="author" content="LayoutIt!">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
 
-  </head>
-  <body>
-
-    <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-6">
-			<div class="dropdown">
-				 
-				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-					Layer Views
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					 <a class="dropdown-item disabled" href="#">Endangered Animals</a> <a class="dropdown-item" href="#">Endagered Plants</a> <a class="dropdown-item" href="#">Population Density</a>
+  	</head>
+  	<body>
+		<div class="container-fluid">
+			<div class="row top-bottom">
+				<div class="col-md-6">
+					<div class="dataset-list"> 
+						<h5>Layer Views</h5>
+						<select id="selDataset">
+							<option value="birds">Endagered Birds</option>
+							<option value="plants">Endagered Plants</option>
+							<option value="density">Population Density</option>
+							<option value="all">All Layers</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div>
+						<h1>
+							Population Impact on Endangered Species</small>
+						</h1>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="page-header">
-				<h1>
-					Population Impact on Endangered Species</small>
-				</h1>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>
+						Interactive Map
+					</h1>
+					<img alt="Interactive Unites States Map" src="https://picsum.photos/700/500">
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<h1>
-				Interactive Map</small>
-			</h1>
-			<img alt="Bootstrap Image Preview" src="https://picsum.photos/700/500">
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-6">
-					<img alt="Bootstrap Image Preview" src="https://picsum.photos/200">
+					<div class="row">
+						<div class="col-md-6">
+							<img class="image-fluid rounded float-right" alt="Oragami Bird" src="../../images/oragami-bird.png" style="width:150px;height:150px;">
+						</div>
+						<div class="col-md-6">
+							<h2>
+								Something about the Birds
+							</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-6">
-					<h2>
-						Something about the Animals
-					</h2>
-					<p>
-						Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-					</p>
+					<div class="row">
+						<div class="col-md-6">
+							<img class="image-fluid rounded float-right" alt="Oragami Flower" src="../../images/oragami-flower2.png" style="width:150px;height:150px;">
+						</div>
+						<div class="col-md-6">
+							<h2>
+								Something About the Plants
+							</h2>
+							<p>
+								Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-6">
-			<div class="row">
-				<div class="col-md-6">
-					<img alt="Icon or Image" src="https://picsum.photos/200">
-				</div>
+			<div class="row top-bottom">
 				<div class="col-md-6">
 					<h2>
-						Somtething About the Plants
+						Comparison Bar Chart
 					</h2>
-					<p>
-						Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-					</p>
+					<img alt="Density and Endagered Species Bar Chart" src="https://picsum.photos/300">
 				</div>
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-6">
+							<p>
+								Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+							</p>
+						</div>
+						<div class="col-md-6">
+							<img class="image-fluid float-left" alt="Oragami Owl" src="../../images/oragami-owl.png" style="width:250px;height:350px;">
+						</div>	
+					</div>	
+				</div>		
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<h2>
-				Comparison Bar Chart
-			</h2>
-			<img alt="Density and Endagered Species Bar Chart" src="https://picsum.photos/300">
-		</div>
-		<div class="col-md-6">
-			<p>
-				Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-			</p>
-		</div>
-	</div>
-</div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-  </body>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/scripts.js"></script>
+	</body>
 </html>
