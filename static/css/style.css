@@ -1,5 +1,9 @@
 # CSS file for Endangered Species webpage
 
+#map { 
+    height: 500px; 
+}
+
 body {
     background-color: lightblue;
   }
