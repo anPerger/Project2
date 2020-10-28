@@ -1,16 +1,21 @@
-var myMap = L.map("#basemap", {
-    center: [45.52, -122.67],
-    zoom: 9
-});
+var map = L.map('map', {
+    scrollWheelZoom: false
+}).setView([37.8, -96], 4);
 
-// Adding a tile layer (the background map image) to our map
-// We use the addTo method to add objects to our map
-L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + API_KEY, {
+    id: 'mapbox/light-v9',
     tileSize: 512,
-    maxZoom: 18,
-    zoomOffset: -1,
-    id: "mapbox/streets-v11",
-    accessToken: API_KEY
-}).addTo(myMap);
+    zoomOffset: -1
+}).addTo(map);
+
+L.geoJson(statesData).addTo(map);
+
+map.on('click', function () {
+    if (map.scrollWheelZoom.enabled()) {
+        map.scrollWheelZoom.disable();
+    }
+    else {
+        map.scrollWheelZoom.enable();
+    }
+});
 

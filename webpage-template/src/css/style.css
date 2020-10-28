@@ -1,32 +1,13 @@
-# CSS file for Endangered Species webpage
-
 body {
     background-color: lightblue;
-  }
+}
 
 .container-fluid {
     background-color: lightblue;
 }
 
-.dataset-list {
-    margin-top: 20px;
-    margin-left: 20px;
-    text-align: left;
+#map {
+    min-height: 600px;
+    background: #ddd;
+    outline: 0;
 }
-
-.col-md-6 {
-    margin-top: 20px;
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 50%;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-    max-width: 50%;
-}
-
-.top-bottom{
-    background-color: slategray;
-    color: white;
-    text-align: center;
-
-}
-
