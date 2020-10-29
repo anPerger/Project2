@@ -1,0 +1,74 @@
+/* Body */
+body 
+.navigation .navbar-brand {
+  color: #213159;
+  margin-left: 20px;
+  padding: 0;
+  font-weight: bold;
+  background-color: white;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.active, .dropdown-menu .dropdown-item:active a:hover {
+  background-color:white;
+}
+.dropdown-item {
+  color: #213159 !important;
+}
+.dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover {
+  background-color:#b3d7ff !important;
+}
+
+.nav-link:hover {
+  background-color:#b3d7ff !important;
+ }
+
+.navbar-brand:hover {
+color: #b3d7ff !important;
+}
+
+
+/* Images */
+img{
+  width:100% !important;
+  height:100% !important;
+}
+.active, .panel:hover {
+  border-color:#213159;
+  border-style: solid;
+  
+}
+.vizualization {
+  width:1000% !important;
+  height:1000% !important;
+}
+
+/* Title */
+.title {
+  color: #3d6098;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  padding-top: 10px;
+}
+
+/* Paragraph */
+p {
+color:teal;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+}
+
+/* Box */
+.box {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 30px 10px;
+  color: #213159;
+  background-color: white;
+
+}
+/* Table */
+.table {
+  font-size: 15px;
+  border-top-color: white;
+}
