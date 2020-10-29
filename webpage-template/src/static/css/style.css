@@ -1,0 +1,13 @@
+body {
+    background-color: lightblue;
+}
+
+.container-fluid {
+    background-color: lightblue;
+}
+
+#map {
+    min-height: 600px;
+    background: #ddd;
+    outline: 0;
+}
