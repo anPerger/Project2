@@ -38,7 +38,6 @@ Scraping data from the dataset sources to answer the questions
 • Geomap
 
 
-
 ## Process 
 
 • Clean in Pandas, save to csv, and load in posgreSQL Sketch ideas A map with multiple layers Population centers/density (heat map) Location of endangered species Number of endangered animals Number of endangered plants Graph comparison: Number of National Wildlife Refuge per state Number of endangered species per state
@@ -47,6 +46,4 @@ Scraping data from the dataset sources to answer the questions
 
 • 
 
-## Conclusion 
 
-• 
