@@ -11,3 +11,9 @@ body {
     background: #ddd;
     outline: 0;
 }
+
+.info {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
