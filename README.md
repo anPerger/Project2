@@ -45,12 +45,17 @@ runipy ./data/cleaning/populationData.ipynb
 5. Clean the Plants data, which outputs to  `./data/Endangered_Plants.csv` & `./data/Endangered_Birds.csv`
 ```bash
 # Clean the birds and plants data with:
-runipy ./data/cleaning/endangered_species.ipynb
+runipy runipy ./data/cleaning/endangered_species.ipynb
 ```
 6. Connect to the MongoDB, and populate the fields
 ```bash
 # WARNING: MongoDB must be running in order for it to be populated
 runipy ./data/database/CSV_to_MongoDB.ipynb
+```
+7. Export and run the flask app
+```bash
+export FLASK_APP=./webpage-template/src/dbconnection.py
+flask run
 ```
 
 ## Process
