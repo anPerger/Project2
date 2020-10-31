@@ -15,12 +15,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1
 }).addTo(map);
 
-// Plant Marker Layer Initialization
-var plantMarkers = L.markerClusterGroup({
-    showCoverageOnHover: false,
-    zoomToBoundsOnClick: true
-});
-
 // Toggle zoom on map based on click
 map.on('click', function () {
     if (map.scrollWheelZoom.enabled()) {
@@ -53,33 +47,10 @@ function style(feature) {
     };
 }
 
-// population  data
+// population data
 jQuery.get("/api/population", function (data) {
     updateStateInfo(data);
 });
-
-// bird json data
-var birdData = null;
-jQuery.get("/api/birds", function (data) {
-    birdData = data;
-});
-
-//plant json data
-function getAndPlotPlants() {
-    jQuery.get("/api/plants", function (data) {
-        // Create a new marker cluster group
-        plantData = data.plant_data
-        for (var i = 0; i < plantData.length; i++) {
-            var plant = plantData[i];
-            var location = [plant.Lat, plant.Long]
-            plantMarkers.addLayer(
-                L.marker(location)
-                    .bindPopup("<h4> Plant Name: " + plant["Species Name"] + "</h4> <hr> <h5> Federal Status: " + plant["Federal Status"] + "</h5>")
-            );
-        }
-        map.addLayer(plantMarkers);
-    });
-}
 
 
 function updateStateInfo(data) {
@@ -158,15 +129,3 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
-
-
-// Listener for toggling on/off plants layer
-$("#plantsLayer").click(function () {
-    if ($("#plantsLayer").hasClass("active")) {
-        $("#plantsLayer").removeClass("active");
-        map.removeLayer(plantMarkers);
-    } else {
-        $("#plantsLayer").addClass("active");
-        getAndPlotPlants();
-    }
-});
