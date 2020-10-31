@@ -1,33 +1,19 @@
+var geojson;
+
+// Create info Div in topright corner
+var info = L.control({ position: 'topright' });
+var div = L.DomUtil.create('div', 'info');
+var opacity = .8
+
 var map = L.map('map', {
     scrollWheelZoom: false
 }).setView([37.8, -96], 4);
-
-// population  data
-popData = null;
-jQuery.get("/api/population", function (data) {
-    popData = data;
-});
-
-// bird json data
-birdData = null;
-jQuery.get("/api/birds", function (data) {
-    birdData = data;
-});
-
-// plant json data
-plantData = null;
-jQuery.get("/api/plants", function (data) {
-    plantData = data;
-});
-
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + API_KEY, {
     id: 'mapbox/light-v9',
     tileSize: 512,
     zoomOffset: -1
 }).addTo(map);
-
-L.geoJson(statesData).addTo(map);
 
 map.on('click', function () {
     if (map.scrollWheelZoom.enabled()) {
@@ -37,4 +23,136 @@ map.on('click', function () {
         map.scrollWheelZoom.enable();
     }
 });
+
+function getColor(d) {
+    return d > 1000 ? '#0A2F51' :
+        d > 500 ? '#0E4D64' :
+            d > 200 ? '#137177' :
+                d > 100 ? '#188977' :
+                    d > 50 ? '#39A96B' :
+                        d > 20 ? '#99D492' :
+                            d > 10 ? '#BFE1B0' :
+                                '#DEEDCF';
+}
+
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.density),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: opacity
+    };
+}
+
+// population  data
+jQuery.get("/api/population", function (data) {
+    updateStateInfo(data);
+});
+
+// bird json data
+var birdData = null;
+jQuery.get("/api/birds", function (data) {
+    birdData = data;
+});
+
+//plant json data
+jQuery.get("/api/plants", function (data) {
+    plotdata(data);
+});
+
+
+//plant layer example
+function plotdata(data) {
+    // Create a new marker cluster group
+    // var markers = L.markerClusterGroup();
+    plantData = data.plant_data
+    console.log(plantData.length)
+    for (var i = 0; i < plantData.length; i++) {
+        var plant = plantData[i];
+        var location = [plant.Lat, plant.Long]
+        L.marker(location)
+            .bindPopup("<h1> Plant Name: " + plant["Species Name"] + "</h1> <hr> <h3> Federal Status: " + plant["Federal Status"] + "</h3>")
+            .addTo(map)
+    }
+    map.addLayer(markers);
+};
+
+function updateStateInfo(data) {
+    geojson = L.geoJson(data, {
+        style: style,
+        onEachFeature: onEachFeature
+    }).addTo(map);
+}
+
+
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: .3
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+
+    // create the control
+    info.onAdd = function (map) {
+        div.innerHTML = '<h4>US Population Density</h4>' + (e.target.feature.properties ?
+            '<b>' + e.target.feature.properties.name + '</b><br />' + e.target.feature.properties.density + ' people / mi<sup>2</sup>'
+            : 'Hover over a state');
+        return div;
+    };
+
+    info.addTo(map);
+}
+
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+}
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+
+map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+
+
+var legend = L.control({ position: 'bottomright' });
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        labels = [],
+        from, to;
+
+    for (var i = 0; i < grades.length; i++) {
+        from = grades[i];
+        to = grades[i + 1];
+
+        labels.push(
+            '<svg class="bd-placeholder-img rounded mr-2" width="15" height="15" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect opacity="' + opacity + '" width="100%" height="100%" fill="' + getColor(from + 1) + '"></rect></svg> ' +
+            from + (to ? '&ndash;' + to : '+'));
+    }
+
+    div.innerHTML = labels.join('<br>');
+    return div;
+};
+
+legend.addTo(map);
 

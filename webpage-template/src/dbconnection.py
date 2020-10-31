@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 import json
 from bson import json_util
+from utils.utils import clean_bounds
 # import scraper
 
 # Create an instance of Flask
@@ -10,20 +11,46 @@ app = Flask(__name__)
 # Use PyMongo to establish Mongo connection
 mongo = PyMongo(app, uri="mongodb://localhost:27017/Endangered_Species")
 
-# Route to render index.html template using data from Mongo
-
 
 @app.route("/api/population")
 def population():
-    # Find one record of data from the mongo database
+    # Find records of data from the mongo database
     displayed_data = mongo.db.population.find()
-    states = []
+    """
+    GeoJson Format
+    https://geojson.org/
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [125.6, 10.1]
+        },
+        "properties": {
+            "name": "Dinagat Islands"
+        }
+    }
+    """
+    response_object = {
+        "type": "FeatureCollection",
+        "features": []
+    }
     for state in list(displayed_data):
         json_state = json.loads(json.dumps(state, default=json_util.default))
-        states.append(json_state)
+        state_object = {
+            "type": "Feature",
+            "id": json_state.get("index"),
+            "properties": {
+                "name": json_state.get("State"),
+                "density": json_state.get("density"),
+            },
+            "geometry": {
+                "type": json_state.get("type"),
+                "coordinates": clean_bounds(json_state)
+            }
+        }
 
-    # Return template and data
-    return {"pop_data": states}
+        response_object["features"].append(state_object)
+    return response_object
 
 
 @app.route("/api/birds")
@@ -34,8 +61,6 @@ def birds():
     for bird in list(displayed_birds):
         json_bird = json.loads(json.dumps(bird, default=json_util.default))
         birds.append(json_bird)
-
-    # Return template and data
     return {"bird_data": birds}
 
 
@@ -47,8 +72,6 @@ def plants():
     for plant in list(displayed_plants):
         json_plant = json.loads(json.dumps(plant, default=json_util.default))
         plants.append(json_plant)
-
-    # Return template and data
     return {"plant_data": plants}
 
 
