@@ -57,27 +57,27 @@ jQuery.get("/api/birds", function (data) {
     birdData = data;
 });
 
-// plant json data
-// jQuery.get("/api/plants", function (data) {
-//     plotdata(data);
-// });
+//plant json data
+jQuery.get("/api/plants", function (data) {
+    plotdata(data);
+});
 
 
 //plant layer example
-// function plotdata(data) {
-//     // Create a new marker cluster group
-//     var markers = L.markerClusterGroup();
-//     plantData = data.plant_data
-//     console.log(plantData.length)
-//     for (var i = 0; i < plantData.length; i++) {
-//         var plant = plantData[i];
-//         var location = [plant.Lat, plant.Long]
-//         markers.addLayer(L.marker(location))
-//             .bindPopup("<h1> Plant Name: " + plant["Species Name"] + "</h1> <hr> <h3> Federal Status: " + plant["Federal Status"] + "</h3>")
-//         // .addTo(map)
-//     }
-//     map.addLayer(markers);
-// };
+function plotdata(data) {
+    // Create a new marker cluster group
+    // var markers = L.markerClusterGroup();
+    plantData = data.plant_data
+    console.log(plantData.length)
+    for (var i = 0; i < plantData.length; i++) {
+        var plant = plantData[i];
+        var location = [plant.Lat, plant.Long]
+        L.marker(location)
+            .bindPopup("<h1> Plant Name: " + plant["Species Name"] + "</h1> <hr> <h3> Federal Status: " + plant["Federal Status"] + "</h3>")
+            .addTo(map)
+    }
+    map.addLayer(markers);
+};
 
 function updateStateInfo(data) {
     geojson = L.geoJson(data, {
@@ -146,7 +146,7 @@ legend.onAdd = function (map) {
         to = grades[i + 1];
 
         labels.push(
-            '<svg class="bd-placeholder-img rounded mr-2" width="15" height="15" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect opacity="' + opacity +'" width="100%" height="100%" fill="' + getColor(from + 1) + '"></rect></svg> ' +
+            '<svg class="bd-placeholder-img rounded mr-2" width="15" height="15" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect opacity="' + opacity + '" width="100%" height="100%" fill="' + getColor(from + 1) + '"></rect></svg> ' +
             from + (to ? '&ndash;' + to : '+'));
     }
 
