@@ -35,10 +35,3 @@ function getAndPlotBirds() {
     }
     map.addLayer(birdMarkers);
 }
-
-
-// // bird json data
-// var birdData = null;
-// jQuery.get("/api/birds", function (data) {
-//     birdData = data;
-// });
