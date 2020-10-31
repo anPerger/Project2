@@ -15,6 +15,13 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1
 }).addTo(map);
 
+// Plant Marker Layer Initialization
+var plantMarkers = L.markerClusterGroup({
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true
+});
+
+// Toggle zoom on map based on click
 map.on('click', function () {
     if (map.scrollWheelZoom.enabled()) {
         map.scrollWheelZoom.disable();
@@ -58,29 +65,22 @@ jQuery.get("/api/birds", function (data) {
 });
 
 //plant json data
-jQuery.get("/api/plants", function (data) {
-    plotdata(data);
-});
-
-
-//plant layer example
-function plotdata(data) {
-    // Create a new marker cluster group
-    var markers = L.markerClusterGroup({
-        showCoverageOnHover: false,
-        zoomToBoundsOnClick: true
+function getAndPlotPlants() {
+    jQuery.get("/api/plants", function (data) {
+        // Create a new marker cluster group
+        plantData = data.plant_data
+        for (var i = 0; i < plantData.length; i++) {
+            var plant = plantData[i];
+            var location = [plant.Lat, plant.Long]
+            plantMarkers.addLayer(
+                L.marker(location)
+                    .bindPopup("<h4> Plant Name: " + plant["Species Name"] + "</h4> <hr> <h5> Federal Status: " + plant["Federal Status"] + "</h5>")
+            );
+        }
+        map.addLayer(plantMarkers);
     });
-    plantData = data.plant_data
-    for (var i = 0; i < plantData.length; i++) {
-        var plant = plantData[i];
-        var location = [plant.Lat, plant.Long]
-        markers.addLayer(
-            L.marker(location)
-                .bindPopup("<h4> Plant Name: " + plant["Species Name"] + "</h4> <hr> <h5> Federal Status: " + plant["Federal Status"] + "</h5>")
-        );
-    }
-    map.addLayer(markers);
-};
+}
+
 
 function updateStateInfo(data) {
     geojson = L.geoJson(data, {
@@ -159,3 +159,14 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
+
+// Listener for toggling on/off plants layer
+$("#plantsLayer").click(function () {
+    if ($("#plantsLayer").hasClass("active")) {
+        $("#plantsLayer").removeClass("active");
+        map.removeLayer(plantMarkers);
+    } else {
+        $("#plantsLayer").addClass("active");
+        getAndPlotPlants();
+    }
+});
