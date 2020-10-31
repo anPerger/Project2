@@ -1,11 +1,11 @@
-var geojson;
+let geojson;
 
 // Create info Div in topright corner
-var info = L.control({ position: 'topright' });
-var div = L.DomUtil.create('div', 'info');
-var opacity = .8
+let info = L.control({ position: 'topright' });
+let div = L.DomUtil.create('div', 'info');
+let opacity = .8
 
-var map = L.map('map', {
+let map = L.map('map', {
     scrollWheelZoom: false
 }).setView([37.8, -96], 4);
 
@@ -52,9 +52,9 @@ jQuery.get("/api/population", function (data) {
 });
 
 // bird json data
-var birdData = null;
+let birdData = null;
 jQuery.get("/api/birds", function (data) {
-    birdData = data;
+    plotbirds(data);
 });
 
 //plant json data
@@ -62,6 +62,28 @@ jQuery.get("/api/plants", function (data) {
     plotdata(data);
 });
 
+//bird layer example
+function plotbirds(data) {
+    // Create a new marker cluster group
+    // var markers = L.markerClusterGroup();
+    birdData = data.bird_data
+    console.log(birdData.length)
+
+    let birdIcon = L.icon({
+        iconUrl: "../static/images/bird-pin.png",
+        iconSize:     [25, 30], // size of the icon
+        iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
+        popupAnchor:  [5, -10] // point from which the popup should open relative to the iconAnchor
+    });
+    
+    for (let i = 0; i < birdData.length; i++) {
+        let bird = birdData[i];
+        let location = [bird.Lat, bird.Long]
+        L.marker(location, {icon: birdIcon})
+        .bindPopup("<h3>Species: " + bird["Species Name"]+ "</h3> <hr> <h4>Protected Habitat: <br>" + bird["Unit Name"]  + "</h4>")
+        .addTo(map);
+    }
+};
 
 //plant layer example
 function plotdata(data) {
@@ -69,14 +91,21 @@ function plotdata(data) {
     // var markers = L.markerClusterGroup();
     plantData = data.plant_data
     console.log(plantData.length)
-    for (var i = 0; i < plantData.length; i++) {
-        var plant = plantData[i];
-        var location = [plant.Lat, plant.Long]
-        L.marker(location)
+
+    let flowerIcon = L.icon({
+        iconUrl: "../static/images/flower-pin.png",
+        iconSize:     [25, 25], // size of the icon
+        iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
+        popupAnchor:  [5, -10] // point from which the popup should open relative to the iconAnchor
+    });
+    
+    for (let i = 0; i < plantData.length; i++) {
+        let plant = plantData[i];
+        let location = [plant.Lat, plant.Long]
+        L.marker(location, {icon: flowerIcon})
             .bindPopup("<h1> Plant Name: " + plant["Species Name"] + "</h1> <hr> <h3> Federal Status: " + plant["Federal Status"] + "</h3>")
             .addTo(map)
     }
-    map.addLayer(markers);
 };
 
 function updateStateInfo(data) {
@@ -88,7 +117,7 @@ function updateStateInfo(data) {
 
 
 function highlightFeature(e) {
-    var layer = e.target;
+    let layer = e.target;
 
     layer.setStyle({
         weight: 5,
@@ -132,16 +161,16 @@ function onEachFeature(feature, layer) {
 map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
 
 
-var legend = L.control({ position: 'bottomright' });
+let legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'info legend'),
+    let div = L.DomUtil.create('div', 'info legend'),
         grades = [0, 10, 20, 50, 100, 200, 500, 1000],
         labels = [],
         from, to;
 
-    for (var i = 0; i < grades.length; i++) {
+    for (let i = 0; i < grades.length; i++) {
         from = grades[i];
         to = grades[i + 1];
 
