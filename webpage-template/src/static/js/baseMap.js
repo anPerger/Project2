@@ -66,15 +66,18 @@ jQuery.get("/api/plants", function (data) {
 //plant layer example
 function plotdata(data) {
     // Create a new marker cluster group
-    // var markers = L.markerClusterGroup();
+    var markers = L.markerClusterGroup({
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true
+    });
     plantData = data.plant_data
-    console.log(plantData.length)
     for (var i = 0; i < plantData.length; i++) {
         var plant = plantData[i];
         var location = [plant.Lat, plant.Long]
-        L.marker(location)
-            .bindPopup("<h1> Plant Name: " + plant["Species Name"] + "</h1> <hr> <h3> Federal Status: " + plant["Federal Status"] + "</h3>")
-            .addTo(map)
+        markers.addLayer(
+            L.marker(location)
+                .bindPopup("<h4> Plant Name: " + plant["Species Name"] + "</h4> <hr> <h5> Federal Status: " + plant["Federal Status"] + "</h5>")
+        );
     }
     map.addLayer(markers);
 };
