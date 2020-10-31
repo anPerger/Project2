@@ -45,12 +45,12 @@ runipy ./data/cleaning/populationData.ipynb
 5. Clean the Plants data, which outputs to  `./data/Endangered_Plants.csv` & `./data/Endangered_Birds.csv`
 ```bash
 # Clean the birds and plants data with:
-runipy runipy ./data/cleaning/endangered_species.ipynb
+runipy ./data/cleaning/endangered_species.ipynb
 ```
 6. Connect to the MongoDB, and populate the fields
 ```bash
 # WARNING: MongoDB must be running in order for it to be populated
-runipy ./webpage-template/src/database/CSV_to_MongoDB.ipynb
+runipy ./data/database/CSV_to_MongoDB.ipynb
 ```
 
 ## Process
