@@ -76,7 +76,7 @@ function plotdata(data) {
             .bindPopup("<h1> Plant Name: " + plant["Species Name"] + "</h1> <hr> <h3> Federal Status: " + plant["Federal Status"] + "</h3>")
             .addTo(map)
     }
-    map.addLayer(markers);
+    map.addLayer(marker);
 };
 
 function updateStateInfo(data) {

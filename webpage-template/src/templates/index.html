@@ -92,26 +92,15 @@
             </h2>
         </div>
         <div class="row">
-            <div id="charts" class="col-md-4">
-                <img class="img-fluid" alt="Density and Endagered Species Bar Chart" src="https://picsum.photos/300">
-            </div>
+            <figure class="highcharts-figure">
+                <div id="container" style="width:100%; height:500px;"></div>
+            </figure>
 
-            <div class="col-md-4">
-                <p>
-                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget
-                    sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem
-                    sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor.
-                    Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin
-                        consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam
-                        velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus.
-                    <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices
-                        massa, et feugiat ipsum consequat eu.</small>
-                </p>
-            </div>
-            <div class="col-md-4">
+          
+            <!-- <div class="col-md-4">
                 <img class="img-fluid" alt="Oragami Owl"
                     src="{{ url_for('static', filename='images/oragami-owl.png') }}">
-            </div>
+            </div> -->
         </div>
     </div>
     <br>
@@ -220,6 +209,16 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/config.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/baseMap.js') }}"></script>
+
+    <!-- Bar scripts -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/plots.js') }}"></script>
+
+  <!-- <script src="style.css"></script> -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
 </body>
 
 </html>
