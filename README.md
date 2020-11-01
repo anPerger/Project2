@@ -41,7 +41,7 @@ a Mongo Database and then displayed on an interactive map using Leaflet Javascri
 ## Data sourcing and cleaning
 The data was gathered from the above mentioned sources and relevant CSV files were downloaded. The cleaning process was done in Jupyter Notebook using Pandas to zero
 in on was was needed for the project. State population figures and population density was gathered from each state and endangered/threatened species data was was
-broken up by plant and animal species information to see if there was a significant difference between the two. Lat/Lng coordinates were drawn from a different CSV
+broken up by plant and bird species information to see if there was a significant difference between the two. Lat/Lng coordinates were drawn from a different CSV
 file from the US Census Bureau to be used to create points on the final map. Once all the CSV files were sourced and cleaned for us, the final cleaned CSV files were 
 saved into the Data folder to be pulled into the Mongo database.
 
@@ -82,7 +82,7 @@ flask run
 Once run, the flask app will pull in all relevant data from the created MongoDB and load it using Javascript and the leaflet module to create an inteactive map with 
 layers of population density by state, endangered bird species, and endangered plant species. These datapoints will be dropped onto the map with unique marker icons 
 to differentiate when multiple layers are applied, and will be clustered using javascript marker clusters to increase readability. The website will also contain a 
-bargraph (created with the plots.js file) showing the relationship between endangered or threatened plant and animal species with population density by state. All
+bargraph (created with the plots.js file) showing the relationship between endangered or threatened plant and bird species with population density by state. All
 states are not included in this barchart, because not every state includes endangered and threatened species.
 
 ## Roadblocks 
