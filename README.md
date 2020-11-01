@@ -66,8 +66,8 @@ flask run
 Once run, the flask app will pull in all relevant data from the created MongoDB and load it using Javascript and the leaflet module to create an inteactive map with 
 layers of population density by state, endangered bird species, and endangered plant species. These datapoints will be dropped onto the map with unique marker icons 
 to differentiate when multiple layers are applied, and will be clustered using javascript marker clusters to increase readability. The website will also contain a 
-bargraph showing the relationship between endangered or threatened plant and animal species with population density by state. All states are not included in this
-barchart, because not every state includes endangered and threatened species.
+bargraph (created with the plots.js file) showing the relationship between endangered or threatened plant and animal species with population density by state. All
+states are not included in this barchart, because not every state includes endangered and threatened species.
 
 ## Roadblocks 
 One major issue while creating the map layers for this project was getting accurate Lat/Lng coordinates for each species and how to apply that on the map. While each
