@@ -13,7 +13,7 @@ $("#birdLayer").click(function () {
 });
 
 let birdIcon = L.icon({
-    iconUrl: "../images/bird-pin.png",
+    iconUrl: "../static/images/bird-pin.png",
     iconSize:     [25, 30], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [5, -10] // point from which the popup should open relative to the iconAnchor
@@ -35,7 +35,7 @@ function getAndPlotBirds() {
                 var location = [bird.Lat, bird.Long]
                 birdMarkers.addLayer(
                     L.marker(location, {icon: birdIcon})
-                        .bindPopup("<h4> Bird Name: " + bird["Unit Name"] + "</h4> <hr> <h5> Federal Status: " + bird["Federal Status"] + "</h5>")
+                        .bindPopup("<h4> Bird Name: " + bird["Species Name"] + "</h4> <hr> <h5> Protected Habitat: " + bird["Unit Name"] + "</h5><br><h5> Federal Status: " + bird["Federal Status"] + "</h5>")
                 );
             }
         });
