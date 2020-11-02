@@ -12,6 +12,7 @@ $("#plantsLayer").click(function () {
     }
 });
 
+// Change the pin image to a flower
 let flowerIcon = L.icon({
     iconUrl: "../static/images/flower-pin.png",
     iconSize:     [25, 25], // size of the icon

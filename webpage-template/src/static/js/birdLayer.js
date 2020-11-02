@@ -12,6 +12,7 @@ $("#birdLayer").click(function () {
     }
 });
 
+// Change the pin image to a bird
 let birdIcon = L.icon({
     iconUrl: "../static/images/bird-pin.png",
     iconSize:     [25, 30], // size of the icon
