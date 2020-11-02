@@ -36,7 +36,7 @@ function getAndPlotPlants() {
                 var location = [plant.Lat, plant.Long]
                 plantMarkers.addLayer(
                     L.marker(location, {icon: flowerIcon})
-                        .bindPopup("<h4> Plant Name: " + plant["Species Name"] + "</h4> <hr> <h5> Federal Status: " + plant["Federal Status"] + "</h5>")
+                        .bindPopup("<h5> Plant Name: " + plant["Species Name"] + "</h5> <hr> <h5>Protected Area: " + plant["Unit Name"] + "</h5><br<h5>Federal Status: " + plant["Federal Status"] + "</h5>")
                 );
             }
         });
