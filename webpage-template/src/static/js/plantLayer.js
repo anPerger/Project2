@@ -13,7 +13,7 @@ $("#plantsLayer").click(function () {
 });
 
 let flowerIcon = L.icon({
-    iconUrl: "../static/images/flower-pin.png",
+    iconUrl: "/static/images/flower-pin.png",
     iconSize:     [25, 25], // size of the icon
     iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
     popupAnchor:  [5, -10] // point from which the popup should open relative to the iconAnchor
