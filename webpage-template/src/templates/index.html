@@ -16,9 +16,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
         integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
         crossorigin="" />
+    <link rel="stylesheet" type="text/css"
+        href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css"
+        href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -36,19 +38,19 @@
                         Layer Views
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#" value="birds">Endagered Birds</a>
-                        <a class="dropdown-item" href="#" value="plants">Endagered Plants</a>
-                        <a class="dropdown-item" href="#" value="density">Population Density</a>
-                        <a class="dropdown-item" href="#" value="all">All Layers</a>
+                        <a class="btn btn-primary btn-sm mb-3 ml-3" href="#" id="birdLayer" value="birds">Endagered
+                            Birds</a>
+                        <a class="btn btn-primary btn-sm mb-3 ml-3" href="#" id="plantsLayer" value="plants">Endagered
+                            Plants</a>
+                        <a class="btn btn-primary btn-sm mb-3 ml-3 active" href="#" id="densityLayer"
+                            value="density">Population Density</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="jumbotron" id="map">
-        {{ data }}
-    </div>
+    <div class="jumbotron" id="map"></div>
 
 
     <div class="container">
@@ -92,6 +94,7 @@
             </h2>
         </div>
         <div class="row">
+<<<<<<< HEAD
             <figure class="highcharts-figure">
                 <div id="container" style="width:100%; height:500px;"></div>
             </figure>
@@ -101,6 +104,13 @@
                 <img class="img-fluid" alt="Oragami Owl"
                     src="{{ url_for('static', filename='images/oragami-owl.png') }}">
             </div> -->
+=======
+            <div class="col-md-12 mt-md-0 mt-3">
+                <figure class="highcharts-figure">
+                    <div id="container" style="width:100%; height:500px;"></div>
+                </figure>
+            </div>
+>>>>>>> eab8e4bf96c6a427310d6da3e5430e934793d15d
         </div>
     </div>
     <br>
@@ -108,85 +118,20 @@
 
     <!-- Footer -->
     <footer class="page-footer font-small blue pt-4">
-
-        <!-- Footer Links -->
         <div class="container text-center text-md-left">
-
             <!-- Grid row -->
             <div class="row">
-
                 <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
+                <div class="col-md-12 mt-md-0 mt-3">
+                    <h5>Contributors</h5>
+                    Audric Perger, Autum Perconti, Hermela Mekonnen, Michelle Hamilton
 
-                    <!-- Content -->
-                    <h5 class="text-uppercase">Footer Content</h5>
-                    <p>Here you can use rows and columns to organize your footer content.</p>
-
+                    <!-- Copyright -->
+                    <div class="footer-copyright text-center py-3">
+                        © 2020 Copyright: Data Analytics Bootcamp, University of Oregon
+                    </div>
+                    <!-- Copyright -->
                 </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-        </div>
-        <!-- Footer Links -->
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-
     </footer>
     <!-- Footer -->
 
@@ -199,6 +144,8 @@
 
     <!-- Leaflet JS-->
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
     <!-- d3 JavaScript -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3-color.v2.min.js"></script>
@@ -209,16 +156,28 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/config.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/baseMap.js') }}"></script>
+<<<<<<< HEAD
+=======
+    <script type="text/javascript" src="{{ url_for('static', filename='js/plantLayer.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/birdLayer.js') }}"></script>
+>>>>>>> eab8e4bf96c6a427310d6da3e5430e934793d15d
 
     <!-- Bar scripts -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/plots.js') }}"></script>
 
+<<<<<<< HEAD
   <!-- <script src="style.css"></script> -->
+=======
+    <!-- <script src="style.css"></script> -->
+>>>>>>> eab8e4bf96c6a427310d6da3e5430e934793d15d
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> eab8e4bf96c6a427310d6da3e5430e934793d15d
 </body>
 
 </html>

@@ -1,5 +1,3 @@
-var geojson;
-
 // Create info Div in topright corner
 var info = L.control({ position: 'topright' });
 var div = L.DomUtil.create('div', 'info');
@@ -9,20 +7,26 @@ var map = L.map('map', {
     scrollWheelZoom: false
 }).setView([37.8, -96], 4);
 
+
+// Plant Marker Layer Initialization
+let densityLayer;
+
+// Listener for toggling on/off plants layer
+$("#densityLayer").click(function () {
+    if ($("#densityLayer").hasClass("active")) {
+        $("#densityLayer").removeClass("active");
+        map.removeLayer(densityLayer);
+    } else {
+        $("#densityLayer").addClass("active");
+        getAndPlotDensity();
+    }
+});
+
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + API_KEY, {
     id: 'mapbox/light-v9',
     tileSize: 512,
     zoomOffset: -1
 }).addTo(map);
-
-map.on('click', function () {
-    if (map.scrollWheelZoom.enabled()) {
-        map.scrollWheelZoom.disable();
-    }
-    else {
-        map.scrollWheelZoom.enable();
-    }
-});
 
 function getColor(d) {
     return d > 1000 ? '#0A2F51' :
@@ -46,6 +50,7 @@ function style(feature) {
     };
 }
 
+<<<<<<< HEAD
 // population  data
 jQuery.get("/api/population", function (data) {
     updateStateInfo(data);
@@ -84,8 +89,19 @@ function updateStateInfo(data) {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(map);
+=======
+// population data
+function getAndPlotDensity() {
+    jQuery.get("/api/population", function (data) {
+        densityLayer = L.geoJson(data, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map);
+    });
+>>>>>>> eab8e4bf96c6a427310d6da3e5430e934793d15d
 }
-
+// Default to having the base layer on
+getAndPlotDensity();
 
 function highlightFeature(e) {
     var layer = e.target;
@@ -113,7 +129,7 @@ function highlightFeature(e) {
 }
 
 function resetHighlight(e) {
-    geojson.resetStyle(e.target);
+    densityLayer.resetStyle(e.target);
 }
 
 function zoomToFeature(e) {
@@ -129,9 +145,7 @@ function onEachFeature(feature, layer) {
 }
 
 
-map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
-
-
+// Legend & attribution layers
 var legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function (map) {
@@ -155,4 +169,14 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
+map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
 
+// Toggle zoom on map based on click
+map.on('click', function () {
+    if (map.scrollWheelZoom.enabled()) {
+        map.scrollWheelZoom.disable();
+    }
+    else {
+        map.scrollWheelZoom.enable();
+    }
+});
