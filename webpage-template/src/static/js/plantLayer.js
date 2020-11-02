@@ -12,6 +12,13 @@ $("#plantsLayer").click(function () {
     }
 });
 
+let flowerIcon = L.icon({
+    iconUrl: "../static/images/flower-pin.png",
+    iconSize:     [25, 25], // size of the icon
+    iconAnchor:   [10, 20], // point of the icon which will correspond to marker's location
+    popupAnchor:  [5, -10] // point from which the popup should open relative to the iconAnchor
+});
+
 //plant json data
 function getAndPlotPlants() {
     if (plantMarkers == null) {
@@ -27,7 +34,7 @@ function getAndPlotPlants() {
                 var plant = plantData[i];
                 var location = [plant.Lat, plant.Long]
                 plantMarkers.addLayer(
-                    L.marker(location)
+                    L.marker(location, {icon: flowerIcon})
                         .bindPopup("<h4> Plant Name: " + plant["Species Name"] + "</h4> <hr> <h5> Federal Status: " + plant["Federal Status"] + "</h5>")
                 );
             }
