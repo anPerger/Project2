@@ -96,3 +96,4 @@ time and energy for everyone else involved. This could have been a much cleaner 
 
 ## Final Product and Conclusion
 ![Image of map](https://imgur.com/a/wRvBtaH)
+![Image of barChart](https://imgur.com/a/sP2ZB82)
