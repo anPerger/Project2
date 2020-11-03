@@ -103,6 +103,6 @@ thing that proved to be inconclusive because of a lack of time and analysis was 
 if there simply isn't any connection at all. Diving more into any one of these specific areas could have uncovered much more information if our focus had been more 
 narrow.
 
-[Image of map](https://imgur.com/a/wRvBtaH)
+[Image of map](https://imgur.com/a/tlAGdJ8)
 
-[Image of barChart](https://imgur.com/a/sP2ZB82)
+[Image of barChart](https://imgur.com/a/InIqFH3)
