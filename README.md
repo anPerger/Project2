@@ -103,7 +103,7 @@ thing that proved to be inconclusive because of a lack of time and analysis was 
 if there simply isn't any connection at all. Diving more into any one of these specific areas could have uncovered much more information with more time or a more 
 narrow focus.
 
-![Image of map](https://files.slack.com/files-pri/T014PTM18MR-F01DWDNUYUB/2020-11-02__3_.png)
+![Image of map](webpage-template/src/static/images/endangeredBirdPlantMap.png)
 
 [Image of barChart](https://imgur.com/a/InIqFH3)
 
