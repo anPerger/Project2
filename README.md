@@ -95,6 +95,8 @@ managerial, as the project repository was not well managed by the repository own
 time and energy for everyone else involved. This could have been a much cleaner and more streamlined process if any number of procautions had been followed. 
 
 ## Final Product and Conclusion
-![Image of map](https://imgur.com/a/wRvBtaH)
+Our final takeaways from this project are that more analysis is necessary to draw any firm conclusions about this topic.
 
-![Image of barChart](https://imgur.com/a/sP2ZB82)
+[Image of map](https://imgur.com/a/wRvBtaH)
+
+[Image of barChart](https://imgur.com/a/sP2ZB82)
