@@ -100,8 +100,8 @@ nature of the topic, but also from time constrictions of incorporating additiond
 of the wildlife refuges listed, we could possibly have discovered some regional diferences not captured at the state level. This would be useful to determine if the
 endangered or threatened species numbers were more impacted by rural or urban populations within a state, instead of just the topline state density numbers. Another
 thing that proved to be inconclusive because of a lack of time and analysis was whether having more wildlife refuges was a sign of more endangered species or less, or
-if there simply isn't any connection at all. Diving more into any one of these specific areas could have uncovered much more information if our focus had been more 
-narrow.
+if there simply isn't any connection at all. Diving more into any one of these specific areas could have uncovered much more information with more time or a more 
+narrow focus.
 
 [Image of map](https://imgur.com/a/tlAGdJ8)
 
