@@ -94,4 +94,5 @@ regularly cross them, either temporarily for migratory purposes or for longer te
 managerial, as the project repository was not well managed by the repository owner, and little and very avoidable mistakes often led to issues down the road, losing
 time and energy for everyone else involved. This could have been a much cleaner and more streamlined process if any number of procautions had been followed. 
 
-## Conclusion
+## Final Product and Conclusion
+![Image of map](https://imgur.com/a/wRvBtaH)
