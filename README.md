@@ -106,3 +106,6 @@ narrow.
 [Image of map](https://imgur.com/a/tlAGdJ8)
 
 [Image of barChart](https://imgur.com/a/InIqFH3)
+
+#### Contributors
+Audric Perger, Autum Perconti, Hermela Mekonnen, Michelle Hamilton
