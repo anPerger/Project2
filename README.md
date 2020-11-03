@@ -105,7 +105,7 @@ narrow focus.
 
 ![Image of map](webpage-template/src/static/images/endangeredBirdPlantMap.png)
 
-[Image of barChart](https://imgur.com/a/InIqFH3)
+![Image of barChart](webpage-template/src/static/images/endangeredBarChart.png)
 
 #### Contributors
 Audric Perger, Autum Perconti, Hermela Mekonnen, Michelle Hamilton
